@@ -33,29 +33,54 @@
 // console.log(first, third);
 
 /* Write your code below. Good luck! 🙂 */
-const calcBMI = function () {
-  this.bmi = this.mass / (this.height * this.height);
+// const calcBMI = function () {
+//   this.bmi = this.mass / (this.height * this.height);
+// };
+
+// const mark = {
+//   fullName: "Mark Miller",
+//   mass: 78,
+//   height: 1.69,
+//   calcBMI,
+// };
+
+// const john = {
+//   fullName: "John Smith",
+//   mass: 92,
+//   height: 1.95,
+//   calcBMI,
+// };
+
+// mark.calcBMI();
+// john.calcBMI();
+
+// console.log(
+//   mark.bmi > john.bmi
+//     ? `${mark.fullName}'s BMI (${mark.bmi}) is higher than ${john.fullName}'s BMI (${john.bmi})!`
+//     : `${john.fullName}'s BMI (${john.bmi}) is higher than ${mark.fullName}'s BMI (${mark.bmi})!`,
+// );
+
+//Objects
+
+const govind = {
+  firstName: "Govind",
+  lastName: `Sharma`,
+  birthYear: 1998,
+  job: "teacher",
+  friends: ["aman", "peter", "tom"],
+  job: "Teacher",
+  setCalcAge: function () {
+    // console.log(this);
+    this.age = new Date().getFullYear() - this.birthYear;
+    return this.age;
+  },
+
+  displayInfo: function () {
+    console.log(`${this.firstName} is a ${this.age} years old ${this.job}`);
+  },
 };
 
-const mark = {
-  fullName: "Mark Miller",
-  mass: 78,
-  height: 1.69,
-  calcBMI,
-};
+govind.setCalcAge();
+console.log(govind.age);
 
-const john = {
-  fullName: "John Smith",
-  mass: 92,
-  height: 1.95,
-  calcBMI,
-};
-
-mark.calcBMI();
-john.calcBMI();
-
-console.log(
-  mark.bmi > john.bmi
-    ? `${mark.fullName}'s BMI (${mark.bmi}) is higher than ${john.fullName}'s BMI (${john.bmi})!`
-    : `${john.fullName}'s BMI (${john.bmi}) is higher than ${mark.fullName}'s BMI (${mark.bmi})!`,
-);
+govind.displayInfo();
