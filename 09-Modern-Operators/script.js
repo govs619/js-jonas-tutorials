@@ -130,3 +130,13 @@ console.log(pizza, risotto, otherFood);
 console.log(restaurant.openingHours);
 const { sat, ...weekdays } = restaurant.openingHours;
 console.log(sat, weekdays); */
+
+// const numArr = [1, 2, 3, 4, 5];
+// const newArr = numArr.map(num => num * num);
+// console.log(newArr);
+
+// const evenArr = numArr.filter(num => num % 2 === 0);
+// console.log(evenArr);
+
+// const sumArr = numArr.reduce((acc, num) => acc + num, 0);
+// console.log(sumArr);
