@@ -181,7 +181,7 @@ wait(1)
 
 // Promise.resolve('Resolved value').then(res => console.log(res));
 
-const whereAmI = async function (country) {
+/* const whereAmI = async function (country) {
   try {
     const response = await fetch(
       `https://api.restcountries.com/countries/v5/names.common/${country}`,
@@ -214,4 +214,45 @@ const whereAmI = async function (country) {
 
 console.log('Start');
 whereAmI('India').then(res => console.log('Response: ', res));
-console.log('End');
+console.log('End'); */
+
+const getJson = async function (url, errMsg = 'Someting went Wrong') {
+  try {
+    const response = await fetch(url, {
+      headers: {
+        Authorization: `Bearer ${YOUR_API_KEY}`,
+      },
+    });
+
+    return response.json();
+  } catch (err) {
+    console.error(`${err}`);
+    throw err;
+  }
+};
+
+const timeout = async function (seconds) {
+  return new Promise(function (_, reject) {
+    setTimeout(function () {
+      reject(new Error('Something went wrong'));
+    }, seconds * 1000);
+  });
+};
+
+//Parallel Promises
+const get3Countries = async function (c1, c2, c3) {
+  try {
+    const data = await Promise.any([
+      getJson(`https://api.restcountries.com/countries/v5/names.common/${c1}`),
+      getJson(`https://api.restcountries.com/countries/v5/names.common/${c2}`),
+      getJson(`https://api.restcountries.com/countries/v5/names.common/${c3}`),
+      timeout(3),
+    ]);
+
+    console.log(data);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+get3Countries('India', 'Nepal', 'Qatar');
